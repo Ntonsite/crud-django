@@ -1,0 +1,38 @@
+{% extends "patient/base.html" %}
+
+
+
+{% block content %}
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Fullname</td>
+            <td>Mobile</td>
+            <td>Location</td>
+            <td><a href="{% url 'patient_insert' %} " class="btn btn-outline-success">
+
+                    <i class="fa fa-plus-square"></i> Add New</a></td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for patient in patient_list %}
+        <tr>
+            <td>{{patient.fullname}}</td>
+            <td>{{patient.mobile}}</td>
+            <td>{{patient.location}}</td>
+            <td>
+                <a href="{% url 'patient_update' patient.id %} " class="btn text-secondary px-0">
+                    <i class="fa fa-edit"></i>
+                </a>
+                <form action="{% url 'patient_delete' patient.id %}" method="POST" class=d-inline>
+                    {%csrf_token%}
+                    <button class="btn">
+                        <i class="fa fa-scissors"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
