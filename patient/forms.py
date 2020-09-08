@@ -1,5 +1,5 @@
 from django import forms
-from .models import Patient, Prescription
+from .models import Patient, ClinicalInfo
 
 class PatientForm(forms.ModelForm):
 
@@ -9,12 +9,12 @@ class PatientForm(forms.ModelForm):
 
 
 
-class PrecriptionForm(forms.ModelForm):
+class ClinicalInfoForm(forms.ModelForm):
 
     class Meta:
-        model = Prescription
+        model = ClinicalInfo
         fields = '__all__'
 
     def __init__(self, *args, **kwargs):
-        super(PrecriptionForm, self).__init__(*args, **kwargs)
+        super(ClinicalInfoForm, self).__init__(*args, **kwargs)
         self.fields['patient'].empty_label = "select"

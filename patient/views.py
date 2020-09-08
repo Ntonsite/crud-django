@@ -1,13 +1,18 @@
 from django.shortcuts import render, redirect
+from django.views.generic import ListView
 from .forms import PatientForm
 from .models import Patient
 
 # Create your views here.
 
-def patient_list(request):
-    context = {'patient_list': Patient.objects.all()}
 
-    return render(request, "patient/patient_list.html",context)
+class PatientListView(ListView):
+    model = Patient
+    template_name = 'patient/patient_list.html'  # <app>/<model>_<viewtype>.html
+    context_object_name = 'patient_list'
+    paginate_by = 5
+    queryset = Patient.objects.all()
+
 
 
 def patient_form(request, id=0):
