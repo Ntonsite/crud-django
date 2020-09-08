@@ -22,7 +22,7 @@ class ClinicalInfo(models.Model):
     ExternalEyeExamination = models.CharField(max_length=300, default='Examination')
     functionalTest         = models.CharField(max_length=300, default='Test')
     refractionDetails      = models.CharField(max_length=300, default='Details')
-    Diagnosis              = models.CharField(max_length=300, default='Diagnosis')
+    diagnosis              = models.CharField(max_length=300, default='Diagnosis')
     patient                = models.ForeignKey(Patient, on_delete=models.CASCADE)
 
 
