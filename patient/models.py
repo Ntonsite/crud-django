@@ -26,6 +26,9 @@ class ClinicalInfo(models.Model):
     patient                = models.ForeignKey(Patient, on_delete=models.CASCADE)
 
 
-
+class Item(models.Model):
+    itemName = models.CharField(max_length=100)
+    count    = models.CharField(max_length=100)
+    price    = models.CharField(max_length=200)
 
 
